@@ -4,6 +4,10 @@ import UnderConstructionPopup from './UnderConstructionPopup'
 export default function ProjectModal({project, onClose}){
   const [showUnderConstruction, setShowUnderConstruction] = useState(false)
   const hasRepoLink = /^https?:\/\//i.test(project?.repoLink || '')
+  const assetBase = import.meta.env.BASE_URL || '/'
+  const imageSrc = project?.image?.startsWith('/')
+    ? `${assetBase}${project.image.slice(1)}`
+    : project?.image
 
   const handlePopupClick = (e) => {
     e.preventDefault()
@@ -64,7 +68,7 @@ export default function ProjectModal({project, onClose}){
             <button onClick={onClose} aria-label="Close" className="modal-close project-modal-close">✕</button>
           </header>
           <div style={{display:'grid',gridTemplateColumns:'1fr',gap:12,marginTop:12}}>
-            <img src={project.image} alt={project.imageAlt || project.title} style={{width:'100%',height:260,objectFit:'cover',borderRadius:8}} />
+            <img src={imageSrc} alt={project.imageAlt || project.title} style={{width:'100%',height:260,objectFit:'cover',borderRadius:8}} />
             <p>{modalDescription}</p>
             <div style={{display:'flex',gap:8,flexWrap:'wrap'}}>
               {project.tags.map(t=> <span key={t} style={{background:'#f1f5fb',padding:'6px 8px',borderRadius:999,fontSize:13}}>{t}</span>)}

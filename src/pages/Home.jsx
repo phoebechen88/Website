@@ -7,6 +7,7 @@ import profilePhoto from '../../Profile.jpg'
 export default function Home(){
   const assetBase = import.meta.env.BASE_URL
   const [scrollY, setScrollY] = useState(0)
+  const [profileLoaded, setProfileLoaded] = useState(false)
   const heroRef = useRef(null)
 
   useEffect(()=>{
@@ -48,8 +49,8 @@ export default function Home(){
               <Link to="/contact" className="cta">Contact</Link>
             </div>
           </div>
-          <div className="hero-small-image mini-profile" style={{flex:1,maxWidth:'220px',minWidth:'140px',height:'220px',display:'flex',alignItems:'center',justifyContent:'center'}}>
-            <img src={profilePhoto} alt="Phoebe Chen profile" style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'14px'}} />
+          <div className={`hero-small-image mini-profile image-frame ${profileLoaded ? 'image-loaded' : 'image-pending'}`} style={{flex:1,maxWidth:'220px',minWidth:'140px',height:'220px',display:'flex',alignItems:'center',justifyContent:'center'}}>
+            <img src={profilePhoto} alt="Phoebe Chen profile" onLoad={() => setProfileLoaded(true)} loading="eager" fetchPriority="high" />
           </div>
         </div>
       </section>

@@ -8,6 +8,10 @@ export default function ProjectDetail(){
   const project = projects.find((p)=>p.id===id)
   const [showUnderConstruction, setShowUnderConstruction] = React.useState(false)
   const hasRepoLink = /^https?:\/\//i.test(project?.repoLink || '')
+  const assetBase = import.meta.env.BASE_URL || '/'
+  const imageSrc = project?.image?.startsWith('/')
+    ? `${assetBase}${project.image.slice(1)}`
+    : project?.image
   const hasDetailedContent = ['proj-1', 'proj-2', 'proj-3', 'proj-4', 'proj-5', 'proj-6'].includes(project?.id)
 
   const handlePopupClick = (e) => {
@@ -337,7 +341,7 @@ export default function ProjectDetail(){
       <section className="section-card">
         <div className="container" style={{display:'grid',gap:'18px'}}>
           <h2>{project.title}</h2>
-          <img src={project.image} alt={project.imageAlt || project.title} style={{width:'100%',height:'min(440px,42vh)',objectFit:'cover',borderRadius:'12px'}} />
+          <img src={imageSrc} alt={project.imageAlt || project.title} style={{width:'100%',height:'min(440px,42vh)',objectFit:'cover',borderRadius:'12px'}} />
           <div className="tags" style={{gap:8}}>{project.tags.map((t)=><span key={t} className="tag">{t}</span>)}</div>
           {hasDetailedContent ? (
             renderDetailedContent()

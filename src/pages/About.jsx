@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import zionPhoto from '../../zion.jpg'
 
 export default function About(){
+  const [zionLoaded, setZionLoaded] = useState(false)
+
   return (
     <section className="section-card">
       <div className="container two-col">
         <h2>About</h2>
-        <div className="about-image">
-          <img src={zionPhoto} alt="Zion" />
+        <div className={`about-image image-frame ${zionLoaded ? 'image-loaded' : 'image-pending'}`}>
+          <img src={zionPhoto} alt="Zion" onLoad={() => setZionLoaded(true)} loading="eager" fetchPriority="high" />
         </div>
         <div className="about-body">
           <p className="muted">Hello! I'm Phoebe Chen, a Statistics &amp; Data Science student at UCLA with a minor in Data Science Engineering. I'm passionate about building data-driven models that uncover meaningful patterns in complex datasets. My work spans statistical modeling, machine learning, and deep learning-from analyzing large-scale public datasets to developing neural networks. I enjoy turning messy data into clear insights and reproducible analyses using tools like Python, R, and PyTorch.</p>
