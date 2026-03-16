@@ -39,3 +39,15 @@ This project is configured to deploy automatically with GitHub Actions.
 For this account and repo naming pattern, an example would be:
 
 `https://phoebechen88.github.io/Website/`
+
+Contact form setup (Formspree)
+
+The Contact page submits to Formspree using an environment variable.
+
+1. Create a form in Formspree and copy the endpoint URL.
+2. Create a `.env` file in the project root with:
+
+`VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/your-form-id`
+
+3. Restart the dev server.
+4. For GitHub Pages, add the same key/value in repository secrets/variables used by your workflow environment.

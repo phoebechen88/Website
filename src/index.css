@@ -184,6 +184,33 @@ header.site-header{background:transparent;padding:18px 0}
   letter-spacing:0.01em;
 }
 
+.honeypot-field{
+  position:absolute;
+  left:-9999px;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
+.form-status{
+  margin-top:10px;
+  padding:10px 12px;
+  border-radius:10px;
+  font-size:0.93rem;
+}
+
+.form-status.success{
+  background:rgba(75, 145, 105, 0.12);
+  border:1px solid rgba(75, 145, 105, 0.3);
+  color:#2f6a48;
+}
+
+.form-status.error{
+  background:rgba(153, 66, 66, 0.1);
+  border:1px solid rgba(153, 66, 66, 0.28);
+  color:#7d2e2e;
+}
+
 .content-panel{transform: translateY(40px);opacity:0;transition:opacity 0.45s ease,transform 0.45s ease;will-change:transform,opacity}
 .content-panel.shown{transform: translateY(0);opacity:1}
 
@@ -360,6 +387,51 @@ p{margin:0 0 14px 0}
 .about-body ul li, .skills-grid li{margin-bottom:8px;}
 
 .about-body ul{margin-top:0;margin-bottom:16px;}
+
+/* About page section grouping */
+.about-body h3{
+  margin-top:18px;
+  margin-bottom:8px;
+  padding:8px 12px;
+  border-left:4px solid var(--accent-2);
+  border-radius:8px;
+  background:rgba(190,208,239,0.18);
+}
+
+.about-body h3 + ul{
+  margin-top:2px;
+  margin-bottom:16px;
+  padding:12px 18px 8px 32px;
+  border:1px solid rgba(109,73,53,0.12);
+  border-radius:10px;
+  background:rgba(255,255,255,0.72);
+}
+
+.about-body h4{
+  margin-top:12px;
+  margin-bottom:6px;
+  color:var(--accent-2);
+  font-size:0.95rem;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+}
+
+.about-body h4 + ul.skills-grid{
+  margin-top:0;
+  margin-bottom:14px;
+  padding:12px 18px 8px 32px;
+  border:1px solid rgba(109,73,53,0.12);
+  border-radius:10px;
+  background:rgba(255,255,255,0.72);
+}
+
+.about-body p.muted em{
+  display:block;
+  padding:10px 12px;
+  border-left:3px solid var(--accent);
+  background:rgba(190,208,239,0.16);
+  border-radius:8px;
+}
 
 /* prettier form controls */
 .form-field{display:flex;flex-direction:column;gap:6px;margin-bottom:15px;}
