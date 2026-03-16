@@ -1,0 +1,68 @@
+.hero-center-mark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  z-index: 2;
+}
+
+.hero-center-cat {
+  width: min(30vw, 320px);
+  height: auto;
+  display: block;
+}
+
+.hero-center-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.hero-center-name {
+  font-family: 'Playfair Display', 'Merriweather', serif;
+  font-size: clamp(3.2rem, 9vw, 7.2rem);
+  line-height: 0.95;
+  color: var(--accent-2);
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+.hero-center-role {
+  margin-top: 0.9rem;
+  font-family: 'Playfair Display', 'Merriweather', serif;
+  font-size: clamp(1rem, 2.1vw, 1.4rem);
+  font-style: italic;
+  color: var(--accent-2);
+  opacity: 0.92;
+}
+
+@media (max-width: 900px) {
+  .hero-center-mark {
+    gap: 1rem;
+  }
+
+  .hero-center-cat {
+    width: min(34vw, 220px);
+  }
+}
+
+@media (max-width: 680px) {
+  .hero-center-mark {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .hero-center-text {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-center-cat {
+    width: min(46vw, 190px);
+  }
+}
