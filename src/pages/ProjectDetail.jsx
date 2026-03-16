@@ -342,10 +342,7 @@ export default function ProjectDetail(){
           {hasDetailedContent ? (
             renderDetailedContent()
           ) : (
-            <>
-              <p>{project.description}</p>
-              <p className="muted">Longer project description placeholder. Add details about tools, problem statement, methodology, and results.</p>
-            </>
+            <p>{project.description}</p>
           )}
           <div className="project-actions">
             <div className="link-group">

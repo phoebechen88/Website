@@ -393,6 +393,7 @@ footer .container{
 
 /* smaller image for about/home */
 .about-image, .hero-small-image{border-radius:12px;overflow:hidden}
+.about-image img{width:100%;height:100%;object-fit:cover;display:block}
 .hero-small-image img{width:100%;height:100%;object-fit:cover}
 
 .skills-grid{columns:2;column-gap:24px;list-style:disc; padding-left:18px;}
