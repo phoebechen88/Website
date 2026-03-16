@@ -174,10 +174,10 @@ header.site-header{background:transparent;padding:18px 0}
 .footer-logo{display:none}
 .footer-paw{width:42px;height:auto;display:block;opacity:0.92}
 .social-links .social-icon{width:24px;height:24px;display:block;transform-origin:center;}
-.social-links .icon-email{transform:scale(1.22);}
+.social-links .icon-email{transform:scale(1.34);}
 .social-links .icon-linkedin{transform:scale(1.02);}
 .social-links .icon-github{transform:scale(1.10);}
-.social-links .icon-instagram{transform:scale(1.08);}
+.social-links .icon-instagram{transform:scale(1.24);}
 
 .contact-btn{
   text-transform:none !important;
@@ -315,6 +315,41 @@ header.site-header{background:transparent;padding:18px 0}
   border-color:transparent;
   text-decoration:none;
   transform:translateY(-1px);
+}
+
+.uc-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(12,16,20,0.56);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:1400;
+  padding:20px;
+}
+
+.uc-dialog{
+  width:min(460px, 100%);
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 12px 40px rgba(2,6,23,0.24);
+  padding:22px;
+  text-align:center;
+  display:grid;
+  gap:12px;
+  justify-items:center;
+}
+
+.uc-paw{
+  width:48px;
+  height:auto;
+  display:block;
+}
+
+.uc-dialog h3{
+  margin:0;
+  font-size:1.15rem;
+  color:var(--accent-2);
 }
 
 .project-modal-close{

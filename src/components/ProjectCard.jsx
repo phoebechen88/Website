@@ -3,6 +3,10 @@ import { useNavigate } from 'react-router-dom'
 
 export default function ProjectCard({project,onOpen}){
   const navigate = useNavigate()
+  const assetBase = import.meta.env.BASE_URL || '/'
+  const imageSrc = project.image?.startsWith('/')
+    ? `${assetBase}${project.image.slice(1)}`
+    : project.image
 
   const goToProject = () => {
     navigate(`/projects/${project.id}`)
@@ -10,7 +14,7 @@ export default function ProjectCard({project,onOpen}){
 
   return (
     <article className="card fade-item" aria-labelledby={`title-${project.id}`} onClick={goToProject} style={{cursor:'pointer'}}>
-      <img src={project.image} alt={project.imageAlt || project.title} />
+      <img src={imageSrc} alt={project.imageAlt || project.title} />
       <div style={{display:'flex',flexDirection:'column',gap:8}}>
         <h3 id={`title-${project.id}`}>{project.title}</h3>
         <p>{project.description}</p>

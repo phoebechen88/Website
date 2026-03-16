@@ -1,6 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import UnderConstructionPopup from './UnderConstructionPopup'
 
 export default function ProjectModal({project, onClose}){
+  const [showUnderConstruction, setShowUnderConstruction] = useState(false)
+  const hasRepoLink = /^https?:\/\//i.test(project?.repoLink || '')
+
+  const handlePopupClick = (e) => {
+    e.preventDefault()
+    setShowUnderConstruction(true)
+  }
+
   const modalContentById = {
     'proj-1': {
       title: 'EMG-Based Keystroke Decoding with Neural Networks',
@@ -47,24 +56,29 @@ export default function ProjectModal({project, onClose}){
 
   if(!project) return null
   return (
-    <div style={{position:'fixed',inset:0,background:'rgba(12,16,20,0.5)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:1200}} onClick={onClose}>
-      <div role="dialog" aria-modal="true" aria-labelledby="modal-title" onClick={(e)=>e.stopPropagation()} style={{background:'#fff',borderRadius:12,maxWidth:800,width:'90%',padding:20,boxShadow:'0 10px 40px rgba(2,6,23,0.2)'}}>
-        <header style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
-          <h3 id="modal-title">{modalTitle}</h3>
-          <button onClick={onClose} aria-label="Close" className="modal-close project-modal-close">✕</button>
-        </header>
-        <div style={{display:'grid',gridTemplateColumns:'1fr',gap:12,marginTop:12}}>
-          <img src={project.image} alt={project.imageAlt || project.title} style={{width:'100%',height:260,objectFit:'cover',borderRadius:8}} />
-          <p>{modalDescription}</p>
-          <div style={{display:'flex',gap:8,flexWrap:'wrap'}}>
-            {project.tags.map(t=> <span key={t} style={{background:'#f1f5fb',padding:'6px 8px',borderRadius:999,fontSize:13}}>{t}</span>)}
-          </div>
-          <div className="modal-actions" style={{display:'flex',gap:12,marginTop:8,flexWrap:'wrap'}}>
-            {project.repoLink && <a href={project.repoLink} target="_blank" rel="noopener noreferrer" className="cta cta-small project-modal-btn">Repository</a>}
-            {project.link && <a href={project.link} target="_blank" rel="noopener noreferrer" className="cta cta-small project-modal-btn">Live demo / Report</a>}
+    <>
+      <div style={{position:'fixed',inset:0,background:'rgba(12,16,20,0.5)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:1200}} onClick={onClose}>
+        <div role="dialog" aria-modal="true" aria-labelledby="modal-title" onClick={(e)=>e.stopPropagation()} style={{background:'#fff',borderRadius:12,maxWidth:800,width:'90%',padding:20,boxShadow:'0 10px 40px rgba(2,6,23,0.2)'}}>
+          <header style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+            <h3 id="modal-title">{modalTitle}</h3>
+            <button onClick={onClose} aria-label="Close" className="modal-close project-modal-close">✕</button>
+          </header>
+          <div style={{display:'grid',gridTemplateColumns:'1fr',gap:12,marginTop:12}}>
+            <img src={project.image} alt={project.imageAlt || project.title} style={{width:'100%',height:260,objectFit:'cover',borderRadius:8}} />
+            <p>{modalDescription}</p>
+            <div style={{display:'flex',gap:8,flexWrap:'wrap'}}>
+              {project.tags.map(t=> <span key={t} style={{background:'#f1f5fb',padding:'6px 8px',borderRadius:999,fontSize:13}}>{t}</span>)}
+            </div>
+            <div className="modal-actions" style={{display:'flex',gap:12,marginTop:8,flexWrap:'wrap'}}>
+              {hasRepoLink
+                ? <a href={project.repoLink} target="_blank" rel="noopener noreferrer" className="cta cta-small project-modal-btn">Repository</a>
+                : <a href="#" onClick={handlePopupClick} className="cta cta-small project-modal-btn">Repository</a>}
+              {project.link && <a href={project.link} onClick={handlePopupClick} className="cta cta-small project-modal-btn">Report</a>}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      {showUnderConstruction && <UnderConstructionPopup onClose={() => setShowUnderConstruction(false)} />}
+    </>
   )
 }
