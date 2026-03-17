@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import catLogo from '../../Cat.svg'
 
 export default function Header(){
   const { pathname } = useLocation()
   const isHome = pathname === '/'
+  const [menuOpen, setMenuOpen] = useState(false)
 
   return (
     <header className="site-header">
@@ -25,6 +26,21 @@ export default function Header(){
           <NavLink to="/resume">Resume</NavLink>
           <NavLink to="/contact" className="nav-contact">Contact</NavLink>
         </nav>
+        <button className="hamburger-btn" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu" aria-expanded={menuOpen}>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+        </button>
+        {menuOpen && (
+          <nav className="mobile-nav" aria-label="Mobile navigation">
+            <NavLink to="/" end onClick={() => setMenuOpen(false)}>Home</NavLink>
+            <NavLink to="/about" onClick={() => setMenuOpen(false)}>About</NavLink>
+            <NavLink to="/projects" onClick={() => setMenuOpen(false)}>Projects</NavLink>
+            <NavLink to="/graphics" onClick={() => setMenuOpen(false)}>Graphics</NavLink>
+            <NavLink to="/resume" onClick={() => setMenuOpen(false)}>Resume</NavLink>
+            <NavLink to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavLink>
+          </nav>
+        )}
       </div>
     </header>
   )
