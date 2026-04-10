@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import broomball from '../../Graphics/Broomball.png'
 import isfWinter from '../../Graphics/ISF Winter.png'
 import nightOfGoodNews from '../../Graphics/Night of Good News.png'
+import santaMonicaEvangelism from '../../Graphics/SM EV.png'
 import springAff from '../../Graphics/Spring AFF.png'
 import springBanquetBanner from '../../Graphics/Spring Banquet Banner.png'
 import springBanquetGraphic from '../../Graphics/Spring Banquet Graphic.png'
@@ -11,6 +12,7 @@ import winterRetreat from '../../Graphics/Winter Retreat.png'
 import springProgramPdf from '../../Graphics/Spring Program.pdf'
 
 const graphicItems = [
+  { type: 'image', title: 'Santa Monica Evangelism', src: santaMonicaEvangelism, alt: 'Santa Monica Evangelism event graphic' },
   { type: 'image', title: 'Spring Banquet Graphic', src: springBanquetGraphic, alt: 'Spring banquet promotional graphic' },
   { type: 'image', title: 'Spring Quarter AFF', src: springAff, alt: 'Spring AFF event design' },
   { type: 'image', title: 'ISF Winter Quarter', src: isfWinter, alt: 'ISF Winter event poster design' },
